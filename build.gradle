@@ -36,7 +36,9 @@ repositories {
 }
 
 dependencies {
+    compile "org.projectlombok:lombok:1.16.8"
 }
+
 
 def time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
 time.setTimeZone(TimeZone.getTimeZone("GMT"))
