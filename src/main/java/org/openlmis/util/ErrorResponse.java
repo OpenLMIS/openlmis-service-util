@@ -1,4 +1,4 @@
-package org.openlmis.utils;
+package org.openlmis.util;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
