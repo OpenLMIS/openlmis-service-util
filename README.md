@@ -2,7 +2,7 @@
 This library contains code that is shared between Services.
 
 ## Prerequisites
-* Gradle 2.14+
+* Docker 1.11+
 
 ## Quick Start
 1. Fork/clone this repository from GitHub.
@@ -10,7 +10,7 @@ This library contains code that is shared between Services.
  ```shell
  git clone https://github.com/OpenLMIS/openlmis-service-util.git
  ```
-2. Assemble the outputs of project and create jar file by running `gradle assemble`.
+2. Assemble the outputs of project and create jar file by running `docker-compose run builder`.
 
 ## <a name="adding-classes"></a> Adding shared classes
 
