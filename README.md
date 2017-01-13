@@ -12,6 +12,17 @@ This library contains code that is shared between Services.
  ```
 2. Assemble the outputs of project and create jar file by running `docker-compose run builder`.
 
+
+## <a name="service-dependency"></a> Including this library in a service
+1. Add OSS Snapshot under `repositories` section of `build.gradle`.
+ ```
+maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+ ```
+ 2. Modify `dependencies` to include openlmis-service-util.
+ ```
+ compile 'org.openlmis:openlmis-service-util:3.0.0-SNAPSHOT'
+ ```
+
 ## <a name="adding-classes"></a> Adding shared classes
 
 When adding utilities to this library:
