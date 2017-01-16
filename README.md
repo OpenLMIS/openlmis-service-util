@@ -3,6 +3,7 @@ This library contains code that is shared between Services.
 
 ## Prerequisites
 * Docker 1.11+
+* Docker Compose 1.6+
 
 ## Quick Start
 1. Fork/clone this repository from GitHub.
