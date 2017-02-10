@@ -14,51 +14,42 @@ public final class MoneyFormat {
   }
 
   /**
-   * Prints formatted Money instance using default formatter.
-   * See: {@link #format(Money, MoneyFormatter)}
+   * Prints formatted Money instance using default format and locale.
    *
    * @param money money to print
    * @return formatted money
    */
   public static String format(Money money) {
-    MoneyFormatterBuilder builder = getDefaultBuilderWithCurrencyPrefix();
-    builder.appendAmountLocalized();
-
-    MoneyFormatter formatter = builder.toFormatter(Locale.getDefault());
-    return format(money, formatter);
+    return format(money, Locale.getDefault());
   }
 
   /**
-   * Prints Money instance using given formatter.
+   * Prints formatted Money instance using default format and given locale.
    *
    * @param money money to print
-   * @param formatter formatter for printing money
+   * @param locale locale for formatting
    * @return formatted money
    */
-  public static String format(Money money, MoneyFormatter formatter) {
-    return formatter.print(money);
+  public static String format(Money money, Locale locale) {
+    return format(money, locale, MoneyAmountStyle.of(locale));
   }
 
   /**
-   * Prints Money instance using default formatter and custom money amount style.
+   * Prints Money instance using default format, given locale and money amount style.
    *
    * @param money money to print
+   * @param locale locale for formatting
    * @param amountStyle style for printing money amount
    * @return formatted money
    */
-  public static String format(Money money, MoneyAmountStyle amountStyle) {
-    MoneyFormatterBuilder builder = getDefaultBuilderWithCurrencyPrefix();
-    builder.appendAmount(amountStyle);
-
-    MoneyFormatter formatter = builder.toFormatter(Locale.getDefault());
-    return format(money, formatter);
-  }
-
-  private static MoneyFormatterBuilder getDefaultBuilderWithCurrencyPrefix() {
+  public static String format(Money money, Locale locale, MoneyAmountStyle amountStyle) {
     MoneyFormatterBuilder builder = new MoneyFormatterBuilder();
+
     builder.appendCurrencyCode();
     builder.appendLiteral(" ");
+    builder.appendAmount(amountStyle);
 
-    return builder;
+    MoneyFormatter formatter = builder.toFormatter(locale);
+    return formatter.print(money);
   }
 }

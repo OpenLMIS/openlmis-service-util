@@ -40,6 +40,8 @@ dependencies {
     compile "javax.validation:validation-api:1.1.0.Final"
     compile "org.slf4j:slf4j-api:1.7.16"
     compile 'org.joda:joda-money:0.12'
+
+    testCompile "junit:junit:4.12"
 }
 
 
@@ -115,6 +117,7 @@ uploadArchives {
 uploadArchives.onlyIf { project.getProperty("ossrhUsername") && project.getProperty("ossrhPassword") }
 
 assemble {
+    dependsOn test
     finalizedBy uploadArchives
 }
 
