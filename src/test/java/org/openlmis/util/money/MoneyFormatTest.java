@@ -37,13 +37,19 @@ public class MoneyFormatTest {
 
   @Test
   public void shouldFormatMoneyWithDefaultLocale() {
-    // given
-    Money money = Money.of(CurrencyUnit.AUD, 10);
+    Locale baseLocale = Locale.getDefault();
+    try {
+      // given
+      Locale.setDefault(Locale.ENGLISH);
+      Money money = Money.of(CurrencyUnit.AUD, 1000);
 
-    // when
-    String result = MoneyFormat.format(money);
+      // when
+      String result = MoneyFormat.format(money);
 
-    // then
-    assertEquals(MoneyFormat.format(money, Locale.getDefault()), result);
+      // then
+      assertEquals("AUD 1,000.00", result);
+    } finally {
+      Locale.setDefault(baseLocale);
+    }
   }
 }
