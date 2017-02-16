@@ -24,8 +24,4 @@ public class NotificationRequest {
   @Getter
   @Setter
   private String content;
-
-  @Getter
-  @Setter
-  private String htmlContent;
 }
