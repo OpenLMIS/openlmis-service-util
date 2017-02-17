@@ -5,6 +5,7 @@ apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
+apply plugin: 'idea'
 
 ext {
     ossrhUsername = System.getenv("OSSRH_USERNAME")
@@ -40,6 +41,8 @@ dependencies {
     compile "javax.validation:validation-api:1.1.0.Final"
     compile "org.slf4j:slf4j-api:1.7.16"
     compile 'org.joda:joda-money:0.12'
+    compile 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final'
+
 
     testCompile "junit:junit:4.12"
 }
