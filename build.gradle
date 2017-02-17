@@ -6,6 +6,9 @@ apply plugin: 'maven'
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
 apply plugin: 'idea'
+apply plugin: 'checkstyle'
+apply plugin: 'jacoco'
+apply plugin: 'pmd'
 
 ext {
     ossrhUsername = System.getenv("OSSRH_USERNAME")
@@ -47,6 +50,36 @@ dependencies {
     testCompile "junit:junit:4.12"
 }
 
+checkstyle {
+    toolVersion = "7.1"
+}
+
+pmd {
+    toolVersion = '5.4.0'
+    consoleOutput= true
+    ignoreFailures = false
+    ruleSetFiles = files("config/pmd/ruleset.xml")
+    reportsDir = file("build/reports/pmd")
+}
+
+tasks.withType(Pmd){
+    reports {
+        xml.enabled true
+        html.enabled true
+    }
+}
+
+jacocoTestReport {
+    group = "reporting"
+    description = "Generate Jacoco coverage reports after running tests."
+    reports {
+        xml.enabled false
+        html.enabled true
+        csv.enabled false
+    }
+
+    additionalSourceDirs = files(sourceSets.main.allJava.srcDirs)
+}
 
 def time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
 time.setTimeZone(TimeZone.getTimeZone("GMT"))
@@ -121,6 +154,7 @@ uploadArchives.onlyIf { project.getProperty("ossrhUsername") && project.getPrope
 
 assemble {
     dependsOn test
+    dependsOn jacocoTestReport
     finalizedBy uploadArchives
 }
 

@@ -1,0 +1,13 @@
+version: "2"
+services:
+
+  service-util:
+    image: openlmis/dev
+    volumes:
+      - '.:/app'
+      - 'gradlecache:/gradle'
+    env_file: .env
+
+volumes:
+  gradlecache:
+    external: false
