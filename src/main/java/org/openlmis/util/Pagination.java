@@ -104,8 +104,7 @@ public final class Pagination {
     }
 
     List<T> subList = originalList.subList(fromIndex, toIndex);
-
-    return new PageImpl<>(subList, pageable, originalList.size());
+    return getPage(subList, pageable, originalList.size());
   }
 
 
