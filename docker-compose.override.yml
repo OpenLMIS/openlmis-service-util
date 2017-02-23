@@ -2,7 +2,7 @@ version: "2"
 services:
 
   service-util:
-    image: openlmis/dev
+    image: openlmis/dev:1
     volumes:
       - '.:/app'
       - 'gradlecache:/gradle'
