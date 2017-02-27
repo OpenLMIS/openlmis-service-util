@@ -139,6 +139,22 @@ uploadArchives {
                 name projectName
                 packaging 'jar'
                 description projectDescription
+                url 'http://openlmis.org'
+
+                scm {
+                  url 'https://github.com/openlmis/openlmis-service-util'
+                  connection 'scm:git:git://github.com/openlmis/openlmis-service-util.git'
+                  developerConnection 'scm:git:git@github.com:openlmis/openlmis-service-util.git'
+                }
+
+                developers {
+                  developer {
+                    id 'techcommittee'
+                    name 'tech committee'
+                    email 'info@openlmis.org'
+                    organizationUrl 'http://villagereach.org'
+                  }
+                }
 
                 licenses {
                     license {
