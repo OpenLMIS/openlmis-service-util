@@ -139,7 +139,7 @@ uploadArchives {
                 name projectName
                 packaging 'jar'
                 description projectDescription
-                url 'http://openlmis.org'
+                url 'https://openlmis.org'
 
                 scm {
                   url 'https://github.com/openlmis/openlmis-service-util'
@@ -152,7 +152,7 @@ uploadArchives {
                     id 'techcommittee'
                     name 'tech committee'
                     email 'info@openlmis.org'
-                    organizationUrl 'http://villagereach.org'
+                    organizationUrl 'https://villagereach.org'
                   }
                 }
 
