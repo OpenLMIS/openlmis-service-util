@@ -29,6 +29,10 @@ public class UuidConverter implements Converter {
    */
   @Override
   public <T> T convert(Class<T> type, Object value) {
+    if (type != UUID.class) {
+      throw new IllegalArgumentException("Only UUID is accepted as a type for this converter.");
+    }
+
     if (value == null || value.toString().isEmpty()) {
       return null;
     }

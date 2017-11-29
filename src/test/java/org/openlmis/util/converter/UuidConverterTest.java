@@ -47,4 +47,9 @@ public class UuidConverterTest {
 
     assertNull(actual);
   }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void shouldNotAcceptOtherTypesThanUuid() {
+    uuidConverter.convert(Integer.class, "de25d55f-0f59-4deb-9889-ae90184e8d3b");
+  }
 }
