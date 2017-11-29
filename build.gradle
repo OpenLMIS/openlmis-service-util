@@ -108,6 +108,13 @@ signing {
     sign configurations.archives
 }
 
+test {
+    testLogging {
+        events 'started', 'passed'
+        exceptionFormat = 'full'
+    }
+}
+
 task javadocJar(type: Jar) {
     classifier = 'javadoc'
     from javadoc
